@@ -13,7 +13,7 @@ namespace chessConsole.tabuleiro
         {
             this.cor = cor;
             this.posicao = posicao;
-            this.tab = tabuleiro;
+            this.tabuleiro = tabuleiro;
             this.qteMovimentos = 0;
         }
 
