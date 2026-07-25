@@ -2,14 +2,14 @@ using System.Reflection.PortableExecutable;
 
 namespace chessConsole.tabuleiro
 {
-    public class Peca
+    public abstract class Peca
     {
         public Posicao posicao {get; set;}
         public Cor cor { get; protected set; }
         public int qteMovimentos { get; protected set; }
         public Tabuleiro tab { get; protected set; }
 
-        public Peca (Tabuleiro tab, Cor cor)
+        public Peca(Tabuleiro tab, Cor cor)
         {
             this.cor = cor;
             this.posicao = null;
@@ -21,5 +21,7 @@ namespace chessConsole.tabuleiro
         {
             qteMovimentos++;
         }
+
+        public abstract bool[,] movimentosPossiveis();
     }
 }
