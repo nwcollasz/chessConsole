@@ -21,6 +21,12 @@ namespace chessConsole
                     Console.Write("Origem: ");
                     Posicao origem = Tela.lerPosicaoChess().toPosicao();
 
+                    bool[,] posicoesPossiveis = game.tab.peca(origem).movimentosPossiveis();
+
+
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(game.tab, posicoesPossiveis);
+
                     Console.Write("Destino: ");
                     Posicao destino = Tela.lerPosicaoChess().toPosicao();
 
