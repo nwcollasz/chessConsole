@@ -1,4 +1,4 @@
-using System.Reflection.PortableExecutable;
+using System.Collections.Generic;
 
 namespace chessConsole.tabuleiro
 {
@@ -36,6 +36,11 @@ namespace chessConsole.tabuleiro
                 }
             }
             return false;
+        }
+
+        public bool podeMoverPara(Posicao pos)
+        {
+            return movimentosPossiveis()[pos.linha, pos.coluna];
         }
 
         public abstract bool[,] movimentosPossiveis();
