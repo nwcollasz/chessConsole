@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using chessConsole.chess;
 using chessConsole.tabuleiro;
 
@@ -6,6 +7,42 @@ namespace chessConsole
 {
     internal class Tela
     {
+        public static void imprimirGame(ChessGame game)
+        {
+            imprimirTabuleiro(game.tab);
+            Console.WriteLine();
+            imprimirPecasCapturadas(game);
+            Console.WriteLine();
+            Console.WriteLine("turno: " + game.turno);
+            Console.WriteLine("aguardando jogada: " + game.jogadorAtual);
+
+        }
+
+        public static void imprimirPecasCapturadas(ChessGame game)
+        {
+            Console.WriteLine("peças capturadas:");
+            Console.WriteLine("brancas: ");
+            imprimirConjunto(game.pecasCapturadas(Cor.Branca));
+            Console.WriteLine();
+            Console.WriteLine("pretas: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            imprimirConjunto(game.pecasCapturadas(Cor.Preta));
+            Console.ForegroundColor = aux;
+            Console.WriteLine();
+        }
+
+        public static void imprimirConjunto(HashSet<Peca> conjunto)
+        {
+            Console.Write("[");
+            foreach (Peca peca in conjunto)
+            {
+                Console.Write(peca + " ");
+            }
+            Console.Write("]");
+        }
+
+
         public static void imprimirTabuleiro(Tabuleiro tab)
         {
             for (int i = 0; i < tab.linhas; i++)

@@ -12,6 +12,7 @@ namespace chessConsole.chess
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
 
+
         public ChessGame()
         {
             tab = new Tabuleiro(8, 8);

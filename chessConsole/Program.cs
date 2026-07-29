@@ -16,10 +16,7 @@ namespace chessConsole
                     try
                     {
                         Console.Clear();
-                        Tela.imprimirTabuleiro(game.tab);
-                        Console.WriteLine();
-                        Console.WriteLine("Turno: " + game.turno);
-                        Console.WriteLine("Aguardando jogada: " + game.jogadorAtual);
+                        Tela.imprimirGame(game);
 
                         Console.WriteLine();
 
@@ -38,7 +35,7 @@ namespace chessConsole
                         Posicao destino = Tela.lerPosicaoChess().toPosicao();
                         game.validarPosicaoDeDestino(origem, destino);
 
-                        game.executaMovimento(origem, destino);
+                        game.realizaJogada(origem, destino);
                     }
                     catch (TabuleiroException e)
                     {
