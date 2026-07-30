@@ -14,12 +14,20 @@ namespace chessConsole
             imprimirPecasCapturadas(game);
             Console.WriteLine();
             Console.WriteLine("turno: " + game.turno);
-            Console.WriteLine("aguardando jogada: " + game.jogadorAtual);
-            if (game.xeque)
-            {
-                Console.WriteLine(" -- check! -- ");
-            }
 
+            if (!game.terminada)
+            {
+                Console.WriteLine("aguardando jogada: " + game.jogadorAtual);
+                if (game.xeque)
+                {
+                    Console.WriteLine("check!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("checkmate!");
+                Console.WriteLine("vencedor: " + game.jogadorAtual);
+            }
         }
 
         public static void imprimirPecasCapturadas(ChessGame game)

@@ -44,7 +44,8 @@ namespace chessConsole
 
                     }
                 }
-                Tela.imprimirTabuleiro(game.tab);
+                Console.Clear();
+                Tela.imprimirGame(game);
             }
             catch (TabuleiroException ex)
             {
