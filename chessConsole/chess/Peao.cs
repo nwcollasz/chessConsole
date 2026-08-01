@@ -5,8 +5,10 @@ namespace chessConsole.chess
 {
     internal class Peao : Peca
     {
-        public Peao(Tabuleiro tab, Cor cor) : base(tab, cor)
+        public ChessGame game;
+        public Peao(Tabuleiro tab, Cor cor, ChessGame game) : base(tab, cor)
         {
+            this.game = game;
         }
         public override string ToString()
         {
@@ -55,6 +57,20 @@ namespace chessConsole.chess
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
+
+                if(posicao.linha == 3)
+                {
+                    Posicao esquerda = new Posicao(posicao.linha, posicao.coluna - 1);
+                    if(tab.posicaoValida(esquerda) && existeInimigo(esquerda) && tab.peca(esquerda) == game.vulneravelEnPassant)
+                    {
+                        mat[esquerda.linha, esquerda.coluna - 1] = true;
+                    }
+                    Posicao direita = new Posicao(posicao.linha, posicao.coluna - 1);
+                    if (tab.posicaoValida(direita) && existeInimigo(direita) && tab.peca(direita) == game.vulneravelEnPassant)
+                    {
+                        mat[direita.linha, direita.coluna - 1] = true;
+                    }
+                }
             }
             else
             {
@@ -80,6 +96,19 @@ namespace chessConsole.chess
                 if (tab.posicaoValida(pos) && existeInimigo(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
+                }
+                if (posicao.linha == 4)
+                {
+                    Posicao esquerda = new Posicao(posicao.linha, posicao.coluna - 1);
+                    if (tab.posicaoValida(esquerda) && existeInimigo(esquerda) && tab.peca(esquerda) == game.vulneravelEnPassant)
+                    {
+                        mat[esquerda.linha, esquerda.coluna - 1] = true;
+                    }
+                    Posicao direita = new Posicao(posicao.linha, posicao.coluna - 1);
+                    if (tab.posicaoValida(direita) && existeInimigo(direita) && tab.peca(direita) == game.vulneravelEnPassant)
+                    {
+                        mat[direita.linha, direita.coluna - 1] = true;
+                    }
                 }
             }
 
