@@ -5,8 +5,11 @@ namespace chessConsole.chess
 {
     internal class Rei : Peca
     {
-        public Rei(Tabuleiro tab, Cor cor) : base(tab, cor)
+        private ChessGame game;
+
+        public Rei(Tabuleiro tab, Cor cor, ChessGame game) : base(tab, cor)
         {
+            this.game = game;
         }
         public override string ToString()
         {
@@ -17,6 +20,12 @@ namespace chessConsole.chess
         {
             Peca p = tab.peca(pos);
             return p == null || p.cor != cor;
+        }
+
+        private bool testeTorreRoque(Posicao pos)
+        {
+            Peca p = tab.peca(pos);
+            return p != null && p is Torre && p.cor == cor && p.qteMovimentos == 0;
         }
 
         public override bool[,] movimentosPossiveis()
@@ -70,6 +79,35 @@ namespace chessConsole.chess
             if (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
+            }
+
+            //roque
+            if (qteMovimentos == 0 && !game.xeque)
+            {
+                //roque pequeno
+                Posicao posT1 = new Posicao(posicao.linha, posicao.coluna + 3);
+                if (testeTorreRoque(posT1))
+                {
+                    Posicao p1 = new Posicao(posicao.linha, posicao.coluna + 1);
+                    Posicao p2 = new Posicao(posicao.linha, posicao.coluna + 2);
+                    if (tab.peca(p1) == null && tab.peca(p2) == null)
+                    {
+                        mat[posicao.linha, posicao.coluna + 2] = true;
+                    }
+                }
+
+                //roque grande
+                Posicao posT2 = new Posicao(posicao.linha, posicao.coluna - 4);
+                if (testeTorreRoque(posT2))
+                {
+                    Posicao p1 = new Posicao(posicao.linha, posicao.coluna - 1);
+                    Posicao p2 = new Posicao(posicao.linha, posicao.coluna - 2);
+                    Posicao p3 = new Posicao(posicao.linha, posicao.coluna - 3);
+                    if (tab.peca(p1) == null && tab.peca(p2) == null && tab.peca(p3) == null)
+                    {
+                        mat[posicao.linha, posicao.coluna - 2] = true;
+                    }
+                }
             }
 
             return mat;
