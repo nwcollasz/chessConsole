@@ -9,3 +9,4 @@ O projeto foi feito para praticar lógica e orientação a objetos, implementand
 * Validação de movimentos das peças
 * Sistema de xeque e xeque-mate
 * Histórico de peças capturadas
+* Jogadas especiais (roque, promoção e en passant)
