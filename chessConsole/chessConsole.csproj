@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="chess\aboniwh2.c4q~" />
+    <None Remove="chess\ChessGame.cs~RF201b5c.TMP" />
     <None Remove="Tela.cs~RF6941d8b.TMP" />
   </ItemGroup>
 

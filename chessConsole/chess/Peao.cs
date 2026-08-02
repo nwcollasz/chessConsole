@@ -63,12 +63,12 @@ namespace chessConsole.chess
                     Posicao esquerda = new Posicao(posicao.linha, posicao.coluna - 1);
                     if(tab.posicaoValida(esquerda) && existeInimigo(esquerda) && tab.peca(esquerda) == game.vulneravelEnPassant)
                     {
-                        mat[esquerda.linha - 1, esquerda.coluna - 1] = true;
+                        mat[esquerda.linha - 1, esquerda.coluna] = true;
                     }
-                    Posicao direita = new Posicao(posicao.linha, posicao.coluna - 1);
+                    Posicao direita = new Posicao(posicao.linha, posicao.coluna + 1);
                     if (tab.posicaoValida(direita) && existeInimigo(direita) && tab.peca(direita) == game.vulneravelEnPassant)
                     {
-                        mat[direita.linha - 1, direita.coluna - 1] = true;
+                        mat[direita.linha - 1, direita.coluna] = true;
                     }
                 }
             }
